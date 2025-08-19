@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10", "3.11" ]   # CT: test on multiple versions
+        python-version: [ "3.9", "3.10", "3.11" ]
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +35,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
       - name: Run tests with pytest
-        run: pytest
+        run: pytest svm.py   # ✅ runs tests inside svm.py
 
   # 🔹 Continuous Deployment (only runs after tests pass on main)
   deploy:
